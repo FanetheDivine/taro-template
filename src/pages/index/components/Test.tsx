@@ -1,12 +1,18 @@
 import { Suspense, useRef } from "react"
 
 const Test = () => {
-  const promiseRef = useRef<Promise<void> | undefined>(new Promise(resolve => {
-    setTimeout(resolve, 1000)
-    console.log(1)
-    promiseRef.current = undefined
-  }))
-  if (promiseRef.current) throw promiseRef.current
+  const isFirstMountedRef = useRef(true)
+  if (isFirstMountedRef.current) {
+    isFirstMountedRef.current = false
+    throw new Promise<void>(resolve => {
+      console.log(1)
+      setTimeout(() => {
+        resolve()
+        console.log(3)
+      }, 3000)
+    })
+  }
+  console.log(2)
   return <h1 className='text-red-500'>test</h1>
 }
 
