@@ -7,6 +7,8 @@
     "import/first": "off",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "off",
-    "import/no-commonjs": "off"
+    "import/no-commonjs": "off",
+    "jsx-curly-brace-presence": "off",
+    "react/jsx-curly-brace-presence": "off"
   }
 }
