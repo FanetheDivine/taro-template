@@ -1,5 +1,5 @@
-import path from 'path';
-import { UnifiedWebpackPluginV5 } from 'weapp-tailwindcss/webpack'
+import path from "path";
+import { UnifiedWebpackPluginV5 } from "weapp-tailwindcss/webpack";
 
 const config = {
   projectName: "test-taro",
@@ -12,21 +12,19 @@ const config = {
   },
   sourceRoot: "src",
   outputRoot: "dist",
-  plugins: [
-    "@taro-hooks/plugin-react"
-  ],
+  plugins: ["@taro-hooks/plugin-react", "taro-app-router"],
   defineConstants: {},
   copy: {
     patterns: [],
     options: {},
   },
-  framework: 'react',
-  compiler: 'webpack5',
+  framework: "react",
+  compiler: "webpack5",
   cache: {
-    enable: false // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
+    enable: false, // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
   },
   alias: {
-    '@': path.resolve(__dirname, '..', 'src/')
+    "@": path.resolve(__dirname, "..", "src/"),
   },
   mini: {
     postcss: {
@@ -47,20 +45,22 @@ const config = {
           generateScopedName: "[name]__[local]___[hash:base64:5]",
         },
       },
-      tailwindcss: {}
+      tailwindcss: {},
     },
     webpackChain: (chain, webpack) => {
       chain.merge({
         plugin: {
           install: {
             plugin: UnifiedWebpackPluginV5,
-            args: [{
-              appType: 'taro'
-            }]
-          }
-        }
-      })
-    }
+            args: [
+              {
+                appType: "taro",
+              },
+            ],
+          },
+        },
+      });
+    },
   },
   h5: {
     publicPath: "/",
@@ -77,7 +77,7 @@ const config = {
           generateScopedName: "[name]__[local]___[hash:base64:5]",
         },
       },
-      tailwindcss: {}
+      tailwindcss: {},
     },
   },
 };

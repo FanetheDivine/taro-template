@@ -4,7 +4,6 @@ import { useEnv, useNavigationBar, useModal, useToast } from "taro-hooks";
 import logo from "./hook.png";
 
 import "./index.scss";
-import { TestSuspense } from "./components/Test";
 
 const Index = () => {
   const env = useEnv();
@@ -27,7 +26,6 @@ const Index = () => {
   return (
     <View className="wrapper">
       <Button onClick={() => setNum(num + 1)}>{num}</Button>
-      <TestSuspense />
       <Image className="logo" src={logo} />
       <Text className="text-red-300">为Taro而设计的Hooks Library</Text>
       <Text className="desc">
